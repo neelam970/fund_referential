@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fund Referential</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <div id="login-section" class="login-container">
+
+        <div class="login-card">
+
+            <h1>Fund Referential</h1>
+            <p>Fund Management System</p>
+
+            <form id="login-form">
+
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="login-message"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <div id="dashboard-section" class="hidden">
+
+        <header>
+
+            <div>
+                <h1>Fund Referential</h1>
+                <p>Fund Management Dashboard</p>
+            </div>
+
+            <button id="logout-button" class="logout-button">
+                Logout
+            </button>
+
+        </header>
+
+
+        <main>
+
+            <!-- STATISTICS -->
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h3>Total Funds</h3>
+                    <p id="total-funds">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Active</h3>
+                    <p id="active-funds">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Inactive</h3>
+                    <p id="inactive-funds">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Closed</h3>
+                    <p id="closed-funds">0</p>
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH / FILTER -->
+
+            <section class="panel">
+
+                <h2>Search & Filter Funds</h2>
+
+                <div class="filters">
+
+                    <input type="text" id="search" placeholder="Search fund code, name or manager">
+
+                    <select id="status-filter">
+
+                        <option value="">All Status</option>
+                        <option value="ACTIVE">Active</option>
+                        <option value="INACTIVE">Inactive</option>
+                        <option value="CLOSED">Closed</option>
+
+                    </select>
+
+                    <input type="text" id="country-filter" placeholder="Country">
+
+                    <input type="text" id="currency-filter" placeholder="Currency">
+
+                    <button id="search-button">
+                        Search
+                    </button>
+
+                    <button id="clear-button" class="secondary">
+                        Clear
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- CREATE FUND -->
+
+            <section class="panel">
+
+                <h2>Create New Fund</h2>
+
+                <form id="fund-form" class="fund-form">
+
+                    <input type="text" id="fund-code" placeholder="Fund Code" required>
+
+                    <input type="text" id="fund-name" placeholder="Fund Name" required>
+
+                    <input type="text" id="fund-type" placeholder="Fund Type" required>
+
+                    <input type="text" id="currency" placeholder="Currency (USD)" maxlength="3" required>
+
+                    <input type="text" id="country" placeholder="Country" required>
+
+                    <input type="text" id="manager" placeholder="Manager" required>
+
+                    <select id="status">
+
+                        <option value="ACTIVE">
+                            Active
+                        </option>
+
+                        <option value="INACTIVE">
+                            Inactive
+                        </option>
+
+                        <option value="CLOSED">
+                            Closed
+                        </option>
+
+                    </select>
+
+                    <button type="submit">
+                        Create Fund
+                    </button>
+
+                </form>
+
+                <p id="form-message"></p>
+
+            </section>
+
+
+            <!-- FUND TABLE -->
+
+            <section class="panel">
+
+                <div class="table-header">
+
+                    <h2>Funds</h2>
+
+                    <button id="refresh-button">
+                        Refresh
+                    </button>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Fund Code</th>
+                                <th>Fund Name</th>
+                                <th>Type</th>
+                                <th>Currency</th>
+                                <th>Country</th>
+                                <th>Manager</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="fund-table-body">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- PAGINATION -->
+
+                <div class="pagination">
+
+                    <button id="previous-button">
+                        Previous
+                    </button>
+
+                    <span id="page-number">
+                        Page 1
+                    </span>
+
+                    <button id="next-button">
+                        Next
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- EDIT MODAL -->
+
+    <div id="edit-modal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <h2>Update Fund</h2>
+
+            <input type="hidden" id="edit-fund-code">
+
+            <label>Fund Name</label>
+
+            <input type="text" id="edit-fund-name">
+
+            <label>Fund Type</label>
+
+            <input type="text" id="edit-fund-type">
+
+            <label>Currency</label>
+
+            <input type="text" id="edit-currency" maxlength="3">
+
+            <label>Country</label>
+
+            <input type="text" id="edit-country">
+
+            <label>Manager</label>
+
+            <input type="text" id="edit-manager">
+
+            <label>Status</label>
+
+            <select id="edit-status">
+
+                <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>
+                <option value="CLOSED">Closed</option>
+
+            </select>
+
+            <div class="modal-buttons">
+
+                <button id="update-button">
+                    Update
+                </button>
+
+                <button id="cancel-button" class="secondary">
+                    Cancel
+                </button>
+
+            </div>
+
+            <p id="edit-message"></p>
+
+        </div>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
