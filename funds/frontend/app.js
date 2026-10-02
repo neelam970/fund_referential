@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/api/funds/";
+const API_URL = "https://fund-referential.onrender.com/api/funds/";
 
 let authHeader = "";
 let currentPage = 1;
